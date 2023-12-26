@@ -1,6 +1,8 @@
 # LangSplat 
-[Minghan Qin*](https://github.com/minghanqin), [Wanhua Li$^{*\dag}$](https://li-wanhua.github.io/), [Jiawei Zhou*](https://latitudezhou.github.io/), [Haoqian Wang$^\dag$](https://www.sigs.tsinghua.edu.cn/whq_en/main.htm), [Hanspeter Pfister](https://seas.harvard.edu/person/hanspeter-pfister)<br>(\* indicates equal contribution, $^\dag$ means Co-corresponding author)<br>| [Webpage](https://langsplat.github.io/) | [Full Paper]() | [Video](https://www.youtube.com/watch?v=XMlyjsei-Es) |<br>| [Datasets with language feature]() | [Pre-trained Models]()|<br>
+[Minghan Qin*](https://github.com/minghanqin), [Wanhua Li*†](https://li-wanhua.github.io/), [Jiawei Zhou*](https://latitudezhou.github.io/), [Haoqian Wang†](https://www.sigs.tsinghua.edu.cn/whq_en/main.htm), [Hanspeter Pfister](https://seas.harvard.edu/person/hanspeter-pfister)<br>(\* indicates equal contribution, † means Co-corresponding author)<br>| [Webpage](https://langsplat.github.io/) | [Full Paper]() | [Video](https://www.youtube.com/watch?v=XMlyjsei-Es) |<br>| [Datasets with language feature]() | [Pre-trained Models]()|<br>
+
 ![Teaser image](assets/teaser.png)
+
 This repository contains the official authors implementation associated with the paper "LangSplat: 3D Language Gaussian Splatting" (Arxiv 2024), which can be found [here](). We further provide the preprocessed datasets 3D-OVS with language feature, as well as pre-trained models. 
 
 <section class="section" id="BibTeX">
