@@ -1,0 +1,9 @@
+[submodule "submodules/simple-knn"]
+	path = submodules/simple-knn
+	url = https://gitlab.inria.fr/bkerbl/simple-knn.git
+[submodule "submodules/diff-gaussian-rasterization"]
+	path = submodules/diff-gaussian-rasterization
+	url = https://github.com/minghanqin/langsplat-rasterization
+[submodule "submodules/segment-anything-langsplat"]
+	path = submodules/segment-anything-langsplat
+	url = https://github.com/minghanqin/segment-anything-langsplat
