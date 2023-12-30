@@ -1,9 +1,9 @@
 # LangSplat 
-[Minghan Qin*](https://github.com/minghanqin), [Wanhua Li*†](https://li-wanhua.github.io/), [Jiawei Zhou*](https://latitudezhou.github.io/), [Haoqian Wang†](https://www.sigs.tsinghua.edu.cn/whq_en/main.htm), [Hanspeter Pfister](https://seas.harvard.edu/person/hanspeter-pfister)<br>(\* indicates equal contribution, † means Co-corresponding author)<br>| [Webpage](https://langsplat.github.io/) | [Full Paper](https://arxiv.org/pdf/2312.16084.pdf) | [Video](https://www.youtube.com/watch?v=XMlyjsei-Es) |<br>| [Datasets with language feature]() | [Pre-trained Models]()|<br>
+[Minghan Qin*](https://github.com/minghanqin), [Wanhua Li*†](https://li-wanhua.github.io/), [Jiawei Zhou*](https://latitudezhou.github.io/), [Haoqian Wang†](https://www.sigs.tsinghua.edu.cn/whq_en/main.htm), [Hanspeter Pfister](https://seas.harvard.edu/person/hanspeter-pfister)<br>(\* indicates equal contribution, † means Co-corresponding author)<br>| [Webpage](https://langsplat.github.io/) | [Full Paper](https://arxiv.org/pdf/2312.16084.pdf) | [Video](https://www.youtube.com/watch?v=XMlyjsei-Es) |<br>| [Datasets with language feature (Coming soon)]() | [Pre-trained Models (Coming soon)]()|<br>
 
 ![Teaser image](assets/teaser.png)
 
-This repository contains the official authors implementation associated with the paper "LangSplat: 3D Language Gaussian Splatting" (Arxiv 2024), which can be found [here](). We further provide the preprocessed datasets 3D-OVS with language feature, as well as pre-trained models. 
+This repository contains the official authors implementation associated with the paper "LangSplat: 3D Language Gaussian Splatting" (Arxiv 2024), which can be found [here](https://arxiv.org/pdf/2312.16084.pdf). We further provide the preprocessed datasets 3D-OVS with language feature, as well as pre-trained models. 
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
@@ -165,7 +165,7 @@ Follow the ```process.sh``` and train LangSplat on your own scenes.
 - [x] release the code of the optimizer
 - [ ] release the code of the autoencoder
 - [x] release the code of the segment-anything-langsplat
-- [ ] update the arxiv link
+- [x] update the arxiv link
 - [ ] release the preprocessed dataset and the pretrained model
 
 This project is still under development. Please feel free to raise issues or submit pull requests to contribute to our codebase.
