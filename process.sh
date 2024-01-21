@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # get the language feature of the scene
-python data_preprocess_new.py --dataset_name $dataset_path
+python preprocess.py --dataset_name $dataset_path
 
 # train the autoencoder
 cd autoencoder

@@ -1,5 +1,5 @@
 # LangSplat 
-[Minghan Qin*](https://github.com/minghanqin), [Wanhua Li*†](https://li-wanhua.github.io/), [Jiawei Zhou*](https://latitudezhou.github.io/), [Haoqian Wang†](https://www.sigs.tsinghua.edu.cn/whq_en/main.htm), [Hanspeter Pfister](https://seas.harvard.edu/person/hanspeter-pfister)<br>(\* indicates equal contribution, † means Co-corresponding author)<br>| [Webpage](https://langsplat.github.io/) | [Full Paper](https://arxiv.org/pdf/2312.16084.pdf) | [Video](https://www.youtube.com/watch?v=XMlyjsei-Es) |<br>| [Datasets with language feature (Coming soon)]() | [Pre-trained Models (Coming soon)]()|<br>
+[Minghan Qin*](https://github.com/minghanqin), [Wanhua Li*†](https://li-wanhua.github.io/), [Jiawei Zhou*](https://latitudezhou.github.io/), [Haoqian Wang†](https://www.sigs.tsinghua.edu.cn/whq_en/main.htm), [Hanspeter Pfister](https://seas.harvard.edu/person/hanspeter-pfister)<br>(\* indicates equal contribution, † means Co-corresponding author)<br>| [Webpage](https://langsplat.github.io/) | [Full Paper](https://arxiv.org/pdf/2312.16084.pdf) | [Video](https://www.youtube.com/watch?v=XMlyjsei-Es) |<br>| [Datasets with language feature](https://pan.baidu.com/s/1S_cdmN9EFOlCQ3z1GZR3EA?pwd=lfea) | [Pre-trained Models](https://pan.baidu.com/s/12L83uEi5KlF9ViAZqp0B4w?pwd=dl22) |<br>
 
 ![Teaser image](assets/teaser.png)
 
@@ -8,10 +8,10 @@ This repository contains the official authors implementation associated with the
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{qin2023Lang,
+    <pre><code>@article{qin2023langsplat,
   title={LangSplat: 3D Language Gaussian Splatting},
   author={Qin, Minghan and Li, Wanhua and Zhou, Jiawei and Wang, Haoqian and Pfister, Hanspeter},
-  journal={arXiv preprint arXiv:2310.06275},
+  journal={arXiv preprint arXiv:2312.16084},
   year={2023}
 }</code></pre>
   </div>
@@ -118,7 +118,7 @@ Follow the ```process.sh``` and train LangSplat on your own scenes.
 - **Step 1: Generate Language Feature of the Scenes.**
   Put the image data into the "input" directory under the ```<dataset_name>/```, then run the following code.
   ```
-  python proprecess.py --dataset_path $dataset_path 
+  python preprocess.py --dataset_path $dataset_path 
   ```
 - **Step 2: Train the Autoencoder and get the lower-dims Feature.**
   ```
@@ -163,9 +163,10 @@ Follow the ```process.sh``` and train LangSplat on your own scenes.
   ```  
 ## TODO list:
 - [x] release the code of the optimizer
-- [ ] release the code of the autoencoder
+- [x] release the code of the autoencoder
 - [x] release the code of the segment-anything-langsplat
 - [x] update the arxiv link
-- [ ] release the preprocessed dataset and the pretrained model
+- [x] release the preprocessed dataset and the pretrained model
+- [ ] release more preprocessed dataset and the pretrained model (coming soon)
 
 This project is still under development. Please feel free to raise issues or submit pull requests to contribute to our codebase.
