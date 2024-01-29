@@ -22,10 +22,15 @@ from arguments import ModelParams, PipelineParams, get_combined_args
 from gaussian_renderer import GaussianModel
 
 def render_set(model_path, source_path, name, iteration, views, gaussians, pipeline, background, args):
-    render_path = os.path.join(model_path, name, "ours_{}".format(iteration), "renders")
-    gts_path = os.path.join(model_path, name, "ours_{}".format(iteration), "gt")
-    render_npy_path = os.path.join(model_path, name, "ours_{}".format(iteration), "renders_npy")
-    gts_npy_path = os.path.join(model_path, name, "ours_{}".format(iteration), "gt_npy")
+    if not args.include_feature:
+        tag = ""
+    else:
+        tag = "_feat"
+    
+    render_path = os.path.join(model_path, name, "ours_{}".format(iteration), f"renders{tag}")
+    gts_path = os.path.join(model_path, name, "ours_{}".format(iteration), f"gt{tag}")
+    render_npy_path = os.path.join(model_path, name, "ours_{}".format(iteration), f"renders_npy{tag}")
+    gts_npy_path = os.path.join(model_path, name, "ours_{}".format(iteration), f"gt_npy{tag}")
 
     makedirs(render_npy_path, exist_ok=True)
     makedirs(gts_npy_path, exist_ok=True)
@@ -63,10 +68,10 @@ def render_sets(dataset : ModelParams, iteration : int, pipeline : PipelineParam
         background = torch.tensor(bg_color, dtype=torch.float32, device="cuda")
 
         if not skip_train:
-             render_set(dataset.model_path, "train", scene.loaded_iter, scene.getTrainCameras(), gaussians, pipeline, background, args)
+             render_set(dataset.model_path, dataset.source_path, "train", scene.loaded_iter, scene.getTrainCameras(), gaussians, pipeline, background, args)
 
         if not skip_test:
-             render_set(dataset.model_path, "test", scene.loaded_iter, scene.getTestCameras(), gaussians, pipeline, background, args)
+             render_set(dataset.model_path, dataset.source_path, "test", scene.loaded_iter, scene.getTestCameras(), gaussians, pipeline, background, args)
 
 if __name__ == "__main__":
     # Set up command line argument parser
