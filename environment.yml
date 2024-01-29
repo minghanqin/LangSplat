@@ -13,9 +13,9 @@ dependencies:
   - torchaudio=0.12.1
   - torchvision=0.13.1
   - tqdm
-  - opencv-python
   - tensorboard
   - pip:
     - submodules/segment-anything-langsplat
-    - submodules/langsplat-rasterization
+    - submodules/diff-gaussian-rasterization
     - submodules/simple-knn
+    - opencv-python
