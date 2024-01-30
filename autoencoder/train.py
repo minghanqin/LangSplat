@@ -33,7 +33,11 @@ if __name__ == '__main__':
                     default=[16, 32, 64, 128, 256, 256, 512],
                     )
     parser.add_argument('--dataset_name', type=str, required=True)
+    parser.add_argument('--output', type=str, required=True)
+    
     args = parser.parse_args()
+    
+    dataset_name = args.dataset_name
     dataset_path = args.dataset_path
     num_epochs = args.num_epochs
     data_dir = f"{dataset_path}/language_features"
