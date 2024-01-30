@@ -22,9 +22,14 @@ if __name__ == '__main__':
                     type=int,
                     default=[16, 32, 64, 128, 256, 256, 512],
                     )
+    parser.add_argument('--ckpt_name', type=str, required=True)
+    parser.add_argument('--output', type=str, required=True)
+    
     args = parser.parse_args()
     
+    dataset_path = args.dataset_path
     dataset_name = args.dataset_name
+    ckpt_name = args.ckpt_name
     encoder_hidden_dims = args.encoder_dims
     decoder_hidden_dims = args.decoder_dims
     ckpt_path = f"ckpt/{dataset_name}/best_ckpt.pth"
