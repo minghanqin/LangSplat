@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ $# -eq 0 ]; then
+    echo "No argument passed"
+    exit 1
+fi
+
 while [[ $# -gt 0 ]]; do
     case $1 in
         -dn|--dataset_name) # name of the dataset
