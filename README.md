@@ -168,8 +168,8 @@ Follow the ```process.sh``` and train LangSplat on your own scenes.
   ```
   python render.py -s dataset_path -m output/${casename} --feature_level ${level}
   ```
-  **Step 5: Eval.**
-  First, we generate the 3-dim language feature map through Step 4 rendering. Subsequently, the decoder elevates the features from 3 dimensions to 512 dimensions. For further operations and detailed explanations, please refer to the [supplementary materials](https://arxiv.org/pdf/2312.16084.pdf). We plan to open-source this portion of the code within March.
+- **Step 5: Eval.**
+  First, we generate the 3-dim language feature map through Step 4. Subsequently, the decoder elevates the features from 3 dimensions to 512 dimensions. For further operations and detailed explanations, please refer to the [supplementary materials](https://arxiv.org/pdf/2312.16084.pdf). We plan to open-source this portion of the code within March.
   ```
   TBD
   ```
