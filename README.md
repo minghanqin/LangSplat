@@ -1,9 +1,9 @@
-# LangSplat 
-[Minghan Qin*](https://github.com/minghanqin), [Wanhua Li*†](https://li-wanhua.github.io/), [Jiawei Zhou*](https://latitudezhou.github.io/), [Haoqian Wang†](https://www.sigs.tsinghua.edu.cn/whq_en/main.htm), [Hanspeter Pfister](https://seas.harvard.edu/person/hanspeter-pfister)<br>(\* indicates equal contribution, † means Co-corresponding author)<br>| [Webpage](https://langsplat.github.io/) | [Full Paper](https://arxiv.org/pdf/2312.16084.pdf) | [Video](https://www.youtube.com/watch?v=XMlyjsei-Es) |<br>| [Datasets with language feature](https://pan.baidu.com/s/1S_cdmN9EFOlCQ3z1GZR3EA?pwd=lfea) | [Pre-trained Models](https://pan.baidu.com/s/12L83uEi5KlF9ViAZqp0B4w?pwd=dl22) |<br>
+# [CVPR2024] LangSplat: 3D Language Gaussian Splatting 
+[Minghan Qin*](https://github.com/minghanqin), [Wanhua Li*†](https://li-wanhua.github.io/), [Jiawei Zhou*](https://latitudezhou.github.io/), [Haoqian Wang†](https://www.sigs.tsinghua.edu.cn/whq_en/main.htm), [Hanspeter Pfister](https://seas.harvard.edu/person/hanspeter-pfister)<br>(\* indicates equal contribution, † means Co-corresponding author)<br>| [Webpage](https://langsplat.github.io/) | [Full Paper](https://arxiv.org/pdf/2312.16084.pdf) | [Video](https://www.youtube.com/watch?v=XMlyjsei-Es) |<br>| [Datasets with language feature](https://pan.baidu.com/s/1S_cdmN9EFOlCQ3z1GZR3EA?pwd=lfea) | [Pre-trained Models](https://pan.baidu.com/s/12L83uEi5KlF9ViAZqp0B4w?pwd=dl22) | [Datasets](https://drive.google.com/file/d/1QF1Po5p5DwTjFHu6tnTeYs_G0egMVmHt/view?usp=sharing) |<br>
 
 ![Teaser image](assets/teaser.png)
 
-This repository contains the official authors implementation associated with the paper "LangSplat: 3D Language Gaussian Splatting" (Arxiv 2024), which can be found [here](https://arxiv.org/pdf/2312.16084.pdf). We further provide the preprocessed datasets 3D-OVS with language feature, as well as pre-trained models. 
+This repository contains the official authors implementation associated with the paper "LangSplat: 3D Language Gaussian Splatting" (CVPR 2024), which can be found [here](https://arxiv.org/pdf/2312.16084.pdf). We further provide the preprocessed datasets 3D-OVS with language feature, as well as pre-trained models. 
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
@@ -38,6 +38,13 @@ The codebase has 3 main components:
 - A script to help you turn your own images into optimization-ready SfM data sets with language feature
 
 The components have been tested on Ubuntu Linux 18.04. Instructions for setting up and running each of them are found in the sections below.
+
+## Datasets
+In the experiments section of our paper, we primarily utilized two datasets: the 3D-OVS dataset and the LERF dataset.
+
+The 3D-OVS dataset is accessible for download via the following link: [Download 3D-OVS Dataset](https://drive.google.com/drive/folders/1kdV14Gu5nZX6WOPbccG7t7obP_aXkOuC?usp=sharing) .
+
+For the LERF dataset, we have expanded upon its existing collection and also provided the corresponding COLMAP data. These resources can be accessed through this link: [Download Expanded LERF Dataset and COLMAP Data](https://drive.google.com/file/d/1QF1Po5p5DwTjFHu6tnTeYs_G0egMVmHt/view?usp=sharing).
 
 ## Optimizer
 
@@ -160,7 +167,12 @@ Follow the ```process.sh``` and train LangSplat on your own scenes.
 - **Step 4: Render the LangSplat.**
   ```
   python render.py -s dataset_path -m output/${casename} --feature_level ${level}
-  ```  
+  ```
+  **Step 5: Eval.**
+  First, we generate the 3-dim language feature map through Step 4 rendering. Subsequently, the decoder elevates the features from 3 dimensions to 512 dimensions. For further operations and detailed explanations, please refer to the [supplementary materials](https://arxiv.org/pdf/2312.16084.pdf). We plan to open-source this portion of the code within March.
+  ```
+  TBD
+  ```
 ## TODO list:
 - [x] release the code of the optimizer
 - [x] release the code of the autoencoder
@@ -168,5 +180,6 @@ Follow the ```process.sh``` and train LangSplat on your own scenes.
 - [x] update the arxiv link
 - [x] release the preprocessed dataset and the pretrained model
 - [ ] release more preprocessed dataset and the pretrained model (coming soon)
+- [ ] release the code of the eval (coming soon)
 
 This project is still under development. Please feel free to raise issues or submit pull requests to contribute to our codebase.
