@@ -27,11 +27,13 @@ if __name__ == '__main__':
     dataset_name = args.dataset_name
     encoder_hidden_dims = args.encoder_dims
     decoder_hidden_dims = args.decoder_dims
+    dataset_path = args.dataset_path
     ckpt_path = f"ckpt/{dataset_name}/best_ckpt.pth"
 
     data_dir = f"{dataset_path}/language_features"
     output_dir = f"{dataset_path}/language_features_dim3"
-
+    os.makedirs(output_dir, exist_ok=True)
+    
     # copy the segmentation map
     for filename in os.listdir(data_dir):
         if filename.endswith("_s.npy"):
