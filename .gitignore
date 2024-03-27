@@ -9,3 +9,4 @@ tensorboard_3d
 **/__pycache__/
 events.out*
 ckpt
+release

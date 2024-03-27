@@ -172,17 +172,27 @@ Follow the ```process.sh``` and train LangSplat on your own scenes.
   python render.py -s dataset_path -m output/${casename} --feature_level ${level}
   ```
 - **Step 5: Eval.**
-  First, we generate the 3-dim language feature map through Step 4. Subsequently, the decoder elevates the features from 3 dimensions to 512 dimensions. For further operations and detailed explanations, please refer to the [supplementary materials](https://arxiv.org/pdf/2312.16084.pdf). We plan to open-source this portion of the code within March.
+  First, we generate the 3-dim language feature map through Step 4. Subsequently, the decoder elevates the features from 3 dimensions to 512 dimensions. For further operations and detailed explanations, please refer to the [supplementary materials](https://arxiv.org/pdf/2312.16084.pdf). 
+
+  -  3D Object Localization on LERF and 3D Semantic Segmentation on LERF. Our eval code is based on [LERF](https://github.com/kerrj/lerf) and [NerfStudio](https://github.com/nerfstudio-project/nerfstudio), thanks for these impressive open-source projects!
+  
+      - Please download the [lerf_ovs]((https://drive.google.com/file/d/1QF1Po5p5DwTjFHu6tnTeYs_G0egMVmHt/view?usp=sharing)) first. 
+      
+      - Set the ```gt_folder``` as the path to lerf_ovs/label. 
+      
+      - Make sure finish the **Step 4** before you run the eval code. 
   ```
-  TBD
+  cd eval
+  sh eval.sh
   ```
+
 ## TODO list:
 - [x] release the code of the optimizer
 - [x] release the code of the autoencoder
 - [x] release the code of the segment-anything-langsplat
 - [x] update the arxiv link
 - [x] release the preprocessed dataset and the pretrained model
-- [ ] release more preprocessed dataset and the pretrained model (coming soon)
-- [ ] release the code of the eval (coming soon)
+- [x] release more preprocessed dataset and the pretrained model (coming soon)
+- [x] release the code of the eval
 
 This project is still under development. Please feel free to raise issues or submit pull requests to contribute to our codebase.

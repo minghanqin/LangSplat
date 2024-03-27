@@ -15,6 +15,10 @@ dependencies:
   - tqdm
   - opencv
   - tensorboard
+  - jaxtyping
+  - matplotlib
+  - typing
+  - pathlib
   - pip:
     - submodules/segment-anything-langsplat
     - submodules/langsplat-rasterization
