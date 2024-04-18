@@ -94,7 +94,7 @@ class GaussianModel:
                 self.spatial_lr_scale,
             )            
     
-    def restore(self, model_args, training_args, mode='train'):
+    def restore(self, model_args, training_args, language_feature_dim, mode='train'):
         if len(model_args) == 13: # 这是一个feature训练时保存的ckpt
             (self.active_sh_degree, 
             self._xyz, 
@@ -126,7 +126,7 @@ class GaussianModel:
                 self.optimizer.load_state_dict(opt_dict)
         
         if mode == 'train':
-            self.training_setup(training_args)
+            self.training_setup(training_args, language_feature_dim)
             self.xyz_gradient_accum = xyz_gradient_accum
             self.denom = denom
         
@@ -195,7 +195,7 @@ class GaussianModel:
         # 在从pointcloud初始化的时候是再训练原始gs的时候，这个时候不需要进行feature的初始化
         self.max_radii2D = torch.zeros((self.get_xyz.shape[0]), device="cuda")
 
-    def training_setup(self, training_args):
+    def training_setup(self, training_args, language_feature_dim):
         self.percent_dense = training_args.percent_dense
         self.xyz_gradient_accum = torch.zeros((self.get_xyz.shape[0], 1), device="cuda")
         self.denom = torch.zeros((self.get_xyz.shape[0], 1), device="cuda")
@@ -203,7 +203,7 @@ class GaussianModel:
         if training_args.include_feature:
             if self._language_feature is None or self._language_feature.shape[0] != self._xyz.shape[0]:
                 # 开始feature训练的时候，往模型中加入language feature参数
-                language_feature = torch.zeros((self._xyz.shape[0], 3), device="cuda")
+                language_feature = torch.zeros((self._xyz.shape[0], language_feature_dim), device="cuda")
                 self._language_feature = nn.Parameter(language_feature.requires_grad_(True))
                 
             l = [
