@@ -217,7 +217,7 @@ def lerf_localization(sem_map, image, clip_model, image_name, img_ann):
     return acc_num
 
 
-def evaluate(feat_dir, output_path, ae_ckpt_path, json_folder, mask_thresh, encoder_hidden_dims, decoder_hidden_dims, logger):
+def evaluate(feat_dir, output_path, ae_ckpt_path, json_folder, mask_thresh, encoder_hidden_dims, decoder_hidden_dims, logger, language_feature_dim):
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     colormap_options = colormaps.ColormapOptions(
@@ -229,11 +229,17 @@ def evaluate(feat_dir, output_path, ae_ckpt_path, json_folder, mask_thresh, enco
 
     gt_ann, image_shape, image_paths = eval_gt_lerfdata(Path(json_folder), Path(output_path))
     eval_index_list = [int(idx) for idx in list(gt_ann.keys())]
-    compressed_sem_feats = np.zeros((len(feat_dir), len(eval_index_list), *image_shape, 3), dtype=np.float32)
+    
+    #FIXME  - adjust the language feature dim here
+    compressed_sem_feats = np.zeros((len(feat_dir), len(eval_index_list), *image_shape, language_feature_dim), dtype=np.float32)
+    print("compressed_sem_feats shape", compressed_sem_feats.shape)
     for i in range(len(feat_dir)):
         feat_paths_lvl = sorted(glob.glob(os.path.join(feat_dir[i], '*.npy')),
                                key=lambda file_name: int(os.path.basename(file_name).split(".npy")[0]))
+        print("feat_paths_lvl", feat_paths_lvl)
         for j, idx in enumerate(eval_index_list):
+            print("shape", np.load(feat_paths_lvl[idx]).shape)
+            
             compressed_sem_feats[i][j] = np.load(feat_paths_lvl[idx])
 
     # instantiate autoencoder and openclip
@@ -319,6 +325,7 @@ if __name__ == "__main__":
                         type=int,
                         default=[16, 32, 64, 128, 256, 256, 512],
                         )
+    parser.add_argument("--language_feature_dim", type=int, default=3)
     args = parser.parse_args()
 
     # NOTE config setting
@@ -326,13 +333,14 @@ if __name__ == "__main__":
     mask_thresh = args.mask_thresh
     feat_dir = [os.path.join(args.feat_dir, dataset_name+f"_{i}", "train/ours_None/renders_npy") for i in range(1,4)]
     output_path = os.path.join(args.output_dir, dataset_name)
-    ae_ckpt_path = os.path.join(args.ae_ckpt_dir, dataset_name, "ae_ckpt/best_ckpt.pth")
+    ae_ckpt_path = os.path.join(args.ae_ckpt_dir, dataset_name, "best_ckpt.pth")
     json_folder = os.path.join(args.json_folder, dataset_name)
-
+    language_feature_dim = args.language_feature_dim
+    
     # NOTE logger
     timestamp = time.strftime('%Y%m%d_%H%M%S', time.localtime())
     os.makedirs(output_path, exist_ok=True)
     log_file = os.path.join(output_path, f'{timestamp}.log')
     logger = get_logger(f'{dataset_name}', log_file=log_file, log_level=logging.INFO)
 
-    evaluate(feat_dir, output_path, ae_ckpt_path, json_folder, mask_thresh, args.encoder_dims, args.decoder_dims, logger)
+    evaluate(feat_dir, output_path, ae_ckpt_path, json_folder, mask_thresh, args.encoder_dims, args.decoder_dims, logger, language_feature_dim)
