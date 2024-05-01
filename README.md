@@ -132,7 +132,11 @@ Follow the ```process.sh``` and train LangSplat on your own scenes.
   ```
 - **Step 2: Train the Autoencoder and get the lower-dims Feature.**
   ```
-  TBD
+  # train the autoencoder
+  cd autoencoder
+  python train.py --dataset_name $dataset_path --encoder_dims 256 128 64 32 3 --decoder_dims 16 32 64 128 256 256 512 --lr 0.0007 --output ae_ckpt
+  # get the 3-dims language feature of the scene
+  python test.py --dataset_name $dataset_path --output
   ```
 
   Our model expect the following dataset structure in the source path location:
