@@ -20,7 +20,6 @@ class Autoencoder(nn.Module):
             if i == 0:
                 decoder_layers.append(nn.Linear(encoder_hidden_dims[-1], decoder_hidden_dims[i]))
             else:
-                encoder_layers.append(torch.nn.BatchNorm1d(decoder_hidden_dims[i-1]))
                 decoder_layers.append(nn.ReLU())
                 decoder_layers.append(nn.Linear(decoder_hidden_dims[i-1], decoder_hidden_dims[i]))
         self.decoder = nn.ModuleList(decoder_layers)
