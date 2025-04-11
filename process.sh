@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # get the language feature of the scene
 python preprocess.py --dataset_path $dataset_path
 
