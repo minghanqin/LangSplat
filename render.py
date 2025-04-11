@@ -56,7 +56,7 @@ def render_sets(dataset : ModelParams, iteration : int, pipeline : PipelineParam
         gaussians = GaussianModel(dataset.sh_degree)
         scene = Scene(dataset, gaussians, shuffle=False)
         checkpoint = os.path.join(args.model_path, 'chkpnt30000.pth')
-        (model_params, first_iter) = torch.load(checkpoint)
+        (model_params, first_iter) = torch.load(checkpoint, weights_only=False)
         gaussians.restore(model_params, args, mode='test')
         
         bg_color = [1,1,1] if dataset.white_background else [0, 0, 0]

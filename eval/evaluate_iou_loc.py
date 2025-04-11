@@ -238,7 +238,7 @@ def evaluate(feat_dir, output_path, ae_ckpt_path, json_folder, mask_thresh, enco
 
     # instantiate autoencoder and openclip
     clip_model = OpenCLIPNetwork(device)
-    checkpoint = torch.load(ae_ckpt_path, map_location=device)
+    checkpoint = torch.load(ae_ckpt_path, map_location=device, weights_only=False)
     model = Autoencoder(encoder_hidden_dims, decoder_hidden_dims).to(device)
     model.load_state_dict(checkpoint)
     model.eval()

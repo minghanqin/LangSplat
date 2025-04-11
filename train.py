@@ -42,7 +42,7 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
         if not checkpoint:
             raise ValueError("checkpoint missing!!!!!")
     if checkpoint:
-        (model_params, first_iter) = torch.load(checkpoint)
+        (model_params, first_iter) = torch.load(checkpoint, weights_only=False)
         if len(model_params) == 12 and opt.include_feature:
             first_iter = 0
         gaussians.restore(model_params, opt)

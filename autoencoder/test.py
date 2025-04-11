@@ -42,7 +42,7 @@ if __name__ == '__main__':
             shutil.copy(source_path, target_path)
 
 
-    checkpoint = torch.load(ckpt_path)
+    checkpoint = torch.load(ckpt_path, weights_only=False)
     train_dataset = Autoencoder_dataset(data_dir)
 
     test_loader = DataLoader(
