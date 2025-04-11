@@ -3,7 +3,7 @@
 	url = https://github.com/minghanqin/segment-anything-langsplat
 [submodule "submodules/simple-knn"]
 	path = submodules/simple-knn
-	url = https://gitlab.inria.fr/bkerbl/simple-knn.git
+	url = https://github.com/camenduru/simple-knn.git
 [submodule "submodules/langsplat-rasterization"]
 	path = submodules/langsplat-rasterization
 	url = https://github.com/minghanqin/langsplat-rasterization
