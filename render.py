@@ -3,7 +3,7 @@
 # GRAPHDECO research group, https://team.inria.fr/graphdeco
 # All rights reserved.
 #
-# This software is free for non-commercial, research and evaluation use 
+# This software is free for non-commercial, research and evaluation use
 # under the terms of the LICENSE.md file.
 #
 # For inquiries contact  george.drettakis@inria.fr
@@ -39,10 +39,10 @@ def render_set(model_path, source_path, name, iteration, views, gaussians, pipel
             rendering = output["render"]
         else:
             rendering = output["language_feature_image"]
-            
+
         if not args.include_feature:
             gt = view.original_image[0:3, :, :]
-            
+
         else:
             gt, mask = view.get_language_feature(os.path.join(source_path, args.language_features_name), feature_level=args.feature_level)
 
@@ -50,7 +50,7 @@ def render_set(model_path, source_path, name, iteration, views, gaussians, pipel
         np.save(os.path.join(gts_npy_path, '{0:05d}'.format(idx) + ".npy"),gt.permute(1,2,0).cpu().numpy())
         torchvision.utils.save_image(rendering, os.path.join(render_path, '{0:05d}'.format(idx) + ".png"))
         torchvision.utils.save_image(gt, os.path.join(gts_path, '{0:05d}'.format(idx) + ".png"))
-               
+
 def render_sets(dataset : ModelParams, iteration : int, pipeline : PipelineParams, skip_train : bool, skip_test : bool, args):
     with torch.no_grad():
         gaussians = GaussianModel(dataset.sh_degree)
@@ -58,7 +58,7 @@ def render_sets(dataset : ModelParams, iteration : int, pipeline : PipelineParam
         checkpoint = os.path.join(args.model_path, 'chkpnt30000.pth')
         (model_params, first_iter) = torch.load(checkpoint, weights_only=False)
         gaussians.restore(model_params, args, mode='test')
-        
+
         bg_color = [1,1,1] if dataset.white_background else [0, 0, 0]
         background = torch.tensor(bg_color, dtype=torch.float32, device="cuda")
 
@@ -70,7 +70,7 @@ def render_sets(dataset : ModelParams, iteration : int, pipeline : PipelineParam
 
 if __name__ == "__main__":
     # Set up command line argument parser
-    
+
     parser = ArgumentParser(description="Testing script parameters")
     model = ModelParams(parser, sentinel=True)
     pipeline = PipelineParams(parser)
