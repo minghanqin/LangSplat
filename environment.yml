@@ -5,13 +5,12 @@ channels:
   - defaults
 dependencies:
   - open-clip-torch
-  - cudatoolkit=11.6
-  - plyfile=0.8.1
-  - python=3.7.13
-  - pip=22.3.1
-  - pytorch=1.12.1
-  - torchaudio=0.12.1
-  - torchvision=0.13.1
+  - plyfile
+  - python
+  - pip
+  - pytorch
+  - torchaudio
+  - torchvision
   - tqdm
   - opencv
   - tensorboard
@@ -23,3 +22,4 @@ dependencies:
     - submodules/segment-anything-langsplat
     - submodules/langsplat-rasterization
     - submodules/simple-knn
+    - nvidia-cuda-runtime-cu12
